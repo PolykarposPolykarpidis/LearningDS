@@ -1,27 +1,45 @@
-1 The original dataset appeared in R. Kelley Pace and Ronald Barry, “Sparse Spatial Autoregressions”, Statistics & Probability Letters 33, no. 3 (1997): 291–297.
+# Cross-validation and/vs Stratified Sampling
 
-2 A piece of information fed to a machine learning system is often called a signal, in reference to Claude Shannon’s information theory, which he developed at Bell Labs to improve telecommunications. His theory: you want a high signal-to-noise ratio.
+Cross-validation and stratified sampling are two important concepts in machine learning, and they're often used together to evaluate the performance of models. Let's break them down:
 
-3 Recall that the transpose operator flips a column vector into a row vector (and vice versa).
+**Cross-validation:**
 
-4 You might also need to check legal constraints, such as private fields that should never be copied to unsafe data stores.
+Cross-validation is a resampling technique used to evaluate the performance of a machine learning model on unseen data. The goal is to estimate the model's performance on a new, independent dataset.
 
-5 The standard deviation is generally denoted σ (the Greek letter sigma), and it is the square root of the variance, which is the average of the squared deviation from the mean. When a feature has a bell-shaped normal distribution (also called a Gaussian distribution), which is very common, the “68-95-99.7” rule applies: about 68% of the values fall within 1σ of the mean, 95% within 2σ, and 99.7% within 3σ.
+Here's how it works:
 
-6 You will often see people set the random seed to 42. This number has no special property, other than being the Answer to the Ultimate Question of Life, the Universe, and Everything.
+1. Divide your dataset into k folds (e.g., 5 folds).
+2. For each fold, use the other k-1 folds as the training set and the remaining fold as the validation set.
+3. Train the model on the training set and evaluate its performance on the validation set.
+4. Repeat this process for each fold, so you have k iterations.
+5. Calculate the average performance across all folds.
 
-7 The location information is actually quite coarse, and as a result many districts will have the exact same ID, so they will end up in the same set (test or train). This introduces some unfortunate sampling bias.
+Cross-validation helps you avoid overfitting by providing a more realistic estimate of your model's performance on unseen data. It's particularly useful when you have a small dataset or want to estimate the model's performance on new data.
 
-8 If you are reading this in grayscale, grab a red pen and scribble over most of the coastline from the Bay Area down to San Diego (as you might expect). You can add a patch of yellow around Sacramento as well.
+**Stratified sampling:**
 
-9 For more details on the design principles, see Lars Buitinck et al., “API Design for Machine Learning Software: Experiences from the Scikit-Learn Project”, arXiv preprint arXiv:1309.0238 (2013).
+Stratified sampling is a technique used to ensure that the samples in your dataset are representative of the underlying population. It's particularly useful when you're working with imbalanced datasets (e.g., class imbalance).
 
-10 Some predictors also provide methods to measure the confidence of their predictions.
+Here's how it works:
 
-11 By the time you read these lines, it may be possible to make all transformers output Pandas DataFrames when they receive a DataFrame as input: Pandas in, Pandas out. There will likely be a global configuration option for this: sklearn.set_config(pandas_in_out=True).
+1. Identify the class or categorical variable you're interested in (e.g., response variable).
+2. Divide your dataset into subsets based on this class or categorical variable.
+3. For each subset, calculate the proportion of instances in each class.
+4. Sample instances from each subset according to these proportions, so that the sampled dataset is representative of the original dataset.
 
-12 See SciPy’s documentation for more details.
+Stratified sampling helps you avoid biased results when working with imbalanced datasets. By ensuring that your samples are representative of the underlying population, you can get more accurate estimates of your model's performance.
 
-13 In a nutshell, a REST (or RESTful) API is an HTTP-based API that follows some conventions, such as using standard HTTP verbs to read, update, create, or delete resources (GET, POST, PUT, and DELETE) and using JSON for the inputs and outputs.
+**Combining cross-validation and stratified sampling:**
 
-14 A captcha is a test to ensure a user is not a robot. These tests have often been used as a cheap way to label training data.
+When you're working with imbalanced datasets, it's common to use stratified sampling to create a balanced dataset. Then, you can use cross-validation to evaluate the performance of your model on this balanced dataset.
+
+For example, let's say you're working with a classification problem where one class has 10% of the instances, and the other class has 90% of the instances. You can use stratified sampling to create a balanced dataset with 50% of each class. Then, you can use cross-validation to evaluate the performance of your model on this balanced dataset.
+
+By combining cross-validation and stratified sampling, you can get a more accurate estimate of your model's performance on unseen data, while also ensuring that your samples are representative of the underlying population.
+
+# Define the regression problem
+- Singular regression problem vs Multiple regression problem (see the num of predictors)
+- Univariate regression problem vs Multivariate regression problem (see the num of predicted values)
+- Batch learning vs Online learning.
+
+# Performance measure

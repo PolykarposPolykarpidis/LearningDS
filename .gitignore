@@ -1,5 +1,5 @@
-
 .venv/*
 datasets/*
 images/*
-
+hands_on/datasets/*
+hands_on/images/*
